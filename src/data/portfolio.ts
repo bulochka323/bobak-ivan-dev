@@ -8,7 +8,7 @@ export const personalInfo = {
   location: "Україна/Львів",
   availability: "Відкритий до співпраці",
   socials: {
-    telegram: "https://t.me/@IvanBobak",
+    telegram: "@IvanBobak",
     whatsapp: "https://wa.me/380930969406",
     portfolio: "https://mrvan.myportfolio.com",
   },
