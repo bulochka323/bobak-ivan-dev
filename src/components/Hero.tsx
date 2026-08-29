@@ -1,4 +1,4 @@
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { personalInfo } from "../data/portfolio";
 import { useReducedMotion } from "../hooks/useReducedMotion";
