@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { personalInfo } from "../data/portfolio";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -11,7 +11,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 28 },
   show: {
     opacity: 1,
