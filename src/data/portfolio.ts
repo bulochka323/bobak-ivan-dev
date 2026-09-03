@@ -137,7 +137,7 @@ export const education = [
     detail: "Комп’ютерні науки",
   },
   {
-    period: "2024 — 2026",
+    period: "2024 — 20277",
     place: "IT STEP Computer Academy",
     detail: "Комп’ютерна графіка і Дизайн",
   },
