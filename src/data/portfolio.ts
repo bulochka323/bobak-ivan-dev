@@ -35,9 +35,9 @@ export const about = {
   ],
   tags: ["Logo Animation", "Typography", "Motion Graphics", "Compositing & VFX"],
   stats: [
-    { label: "Років досвіду", value: "5+" },
-    { label: "Проєктів", value: "50+" },
-    { label: "Клієнтів", value: "30+" },
+    { label: "Років досвіду", value: "2" },
+    { label: "Проєктів", value: "35+" },
+    { label: "Клієнтів", value: "6+" },
   ],
 };
 
