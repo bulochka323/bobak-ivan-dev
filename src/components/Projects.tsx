@@ -1,80 +1,125 @@
-import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 import { projects } from "../data/portfolio";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function Projects() {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  const scrollBy = (dir: "left" | "right") => {
+    if (!scrollerRef.current) return;
+    const amount = scrollerRef.current.clientWidth * 0.75;
+    scrollerRef.current.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section id="projects" className="py-24 md:py-32 px-5 md:px-8">
-      <div className="mx-auto max-w-6xl">
+    <section id="projects" className="py-24 md:py-32">
+      <div className="px-5 md:px-8 mx-auto max-w-6xl">
         <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
-            Projects
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Вибрані проєкти
-          </h2>
-          <p className="text-[var(--color-text-secondary)] max-w-xl mb-14">
-            Анімація логотипів, VFX, типографіка та motion graphics.
-          </p>
-        </ScrollReveal>
+          <div className="flex items-end justify-between gap-4 mb-10">
+            <div>
+              <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
+                Projects
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+                Вибрані проєкти
+              </h2>
+              <p className="text-[var(--color-text-secondary)] max-w-xl">
+                Свайпай або скроль — короткі відео прямо тут
+              </p>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.id} delay={i * 0.08}>
-              <a
-                href={project.link}
-                className="group block relative rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:border-[var(--color-accent)]/50"
-                onMouseEnter={() => setHovered(project.id)}
-                onMouseLeave={() => setHovered(null)}
+            {/* Кнопки навігації стрічки (десктоп) */}
+            <div className="hidden sm:flex gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => scrollBy("left")}
+                className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+                aria-label="Попередні"
               >
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)]/80 via-transparent to-transparent opacity-60" />
-                  <div className="absolute top-4 right-4 flex items-center gap-1 rounded-full bg-[var(--color-bg)]/70 backdrop-blur px-3 py-1 text-xs text-[var(--color-text-secondary)]">
-                    {project.year}
-                  </div>
-                </div>
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollBy("right")}
+                className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+                aria-label="Наступні"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
 
-                <div className="p-5 md:p-6">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl font-semibold group-hover:text-[var(--color-accent)] transition-colors">
-                      {project.title}
-                    </h3>
-                    <ArrowUpRight
-                      size={20}
-                      className={`shrink-0 mt-1 transition-all duration-300 ${
-                        hovered === project.id
-                          ? "text-[var(--color-accent)] translate-x-0.5 -translate-y-0.5"
-                          : "text-[var(--color-muted)]"
-                      }`}
-                    />
-                  </div>
-                  <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
-                    {project.description}
-                  </p>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="text-xs rounded-full border border-[var(--color-border)] px-2.5 py-1 text-[var(--color-muted)]"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </a>
-            </ScrollReveal>
-          ))}
-        </div>
+      {/* Горизонтальна стрічка */}
+      <div
+        ref={scrollerRef}
+        className="flex gap-5 overflow-x-auto px-5 md:px-8 pb-4 snap-x snap-mandatory scroll-smooth"
+        style={{
+          scrollbarWidth: "thin",
+          scrollbarColor: "var(--color-border) transparent",
+        }}
+      >
+        {projects.map((project) => (
+          <article
+            key={project.id}
+            className="snap-start shrink-0 w-[85vw] sm:w-[400px] md:w-[460px] rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]"
+          >
+            <div className="aspect-video relative bg-black group">
+              <video
+                src={project.video}
+                poster={project.poster}
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                className="w-full h-full object-cover"
+                onMouseEnter={(e) => {
+                  const v = e.currentTarget;
+                  v.play().catch(() => {});
+                }}
+                onMouseLeave={(e) => {
+                  const v = e.currentTarget;
+                  v.pause();
+                  v.currentTime = 0;
+                }}
+              />
+            </div>
+
+            <div className="p-5">
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <h3 className="text-lg font-semibold leading-snug">
+                  {project.title}
+                </h3>
+                <span className="text-xs text-[var(--color-muted)] shrink-0 mt-1">
+                  {project.year}
+                </span>
+              </div>
+
+              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2 mb-3">
+                {project.description}
+              </p>
+
+              <ul className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <li
+                    key={tag}
+                    className="text-xs rounded-full border border-[var(--color-border)] px-2.5 py-1 text-[var(--color-muted)]"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+
+        {/* невеликий відступ справа */}
+        <div className="shrink-0 w-2" />
       </div>
     </section>
   );
