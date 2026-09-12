@@ -1,14 +1,14 @@
 export const personalInfo = {
-  name: "Bobak Ivan",
+  name: "Bovano",
   role: "Motion Designer",
   tagline:
-    "Моушн-дизайнер зі смаком до сучасної динамічної анімації. Створюю стильні intro, анімую логотипи та текст, перетворюючи звичайні ідеї на крутий візуальний продукт.",
-  email: "CM,BGSKUJFDHSGIU",
+    "Моушн-дизайн зі смаком до сучасної динамічної анімації. Створюю стильні intro, анімую логотипи та текст, перетворюючи звичайні ідеї на крутий візуальний продукт.",
+  email: "hello@bovano.com", // постав свій реальний email
   phone: "+380930969406",
-  location: "Україна/Львів",
+  location: "Україна / Львів",
   availability: "Відкритий до співпраці",
   socials: {
-    telegram: "@IvanBobak",
+    telegram: "https://t.me/IvanBobak",
     whatsapp: "https://wa.me/380930969406",
     portfolio: "https://mrvan.myportfolio.com",
   },
@@ -64,8 +64,8 @@ export const projects = [
     title: "MR.VAN — Motion Design Channel",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
-    image: "https://images.unsplash.com/photo-1618005182384-a83fe6d1c1a7?w=800&q=80",
-    link: "#",
+    video: "/videos/mrvan.mp4",
+    poster: "/videos/mrvan-poster.jpg",
     year: "2025",
   },
   {
@@ -73,8 +73,8 @@ export const projects = [
     title: "Logo Animation",
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
-    link: "#",
+    video: "/videos/logo-animation.mp4",
+    poster: "/videos/logo-animation-poster.jpg",
     year: "2025",
   },
   {
@@ -82,8 +82,8 @@ export const projects = [
     title: "VFX Showreel",
     description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
     tags: ["VFX", "Particles", "Compositing"],
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-    link: "#",
+    video: "/videos/vfx-showreel.mp4",
+    poster: "/videos/vfx-showreel-poster.jpg",
     year: "2025",
   },
   {
@@ -91,8 +91,8 @@ export const projects = [
     title: "Благодійне бюро",
     description: "Кінематографічне intro з об’ємною графікою та атмосферним освітленням.",
     tags: ["Intro", "3D", "Motion"],
-    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=800&q=80",
-    link: "#",
+    video: "/videos/charity.mp4",
+    poster: "/videos/charity-poster.jpg",
     year: "2024",
   },
   {
@@ -100,8 +100,8 @@ export const projects = [
     title: "Black Friday +30%",
     description: "Яскрава промо-анімація для акції з динамічною типографікою.",
     tags: ["Typography", "Promo", "Motion"],
-    image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=800&q=80",
-    link: "#",
+    video: "/videos/black-friday.mp4",
+    poster: "/videos/black-friday-poster.jpg",
     year: "2024",
   },
   {
@@ -109,21 +109,22 @@ export const projects = [
     title: "Цікавий факт",
     description: "Стильна текстова анімація з мінімалістичною графікою.",
     tags: ["Typography", "Titling"],
-    image: "https://images.unsplash.com/photo-1618005198919-d00d482e26bc?w=800&q=80",
-    link: "#",
+    video: "/videos/fact.mp4",
+    poster: "/videos/fact-poster.jpg",
     year: "2024",
   },
 ];
 
 export const experience = [
   {
-    company: 'ТОВ «Вентвам»',
+    company: "ТОВ «Вентвам»",
     role: "Керівник робочої групи",
     period: "2021 — 2026",
-    description: "Керівництво командою, моушн-дизайн, анімація логотипів та VFX для клієнтських проєктів.",
+    description:
+      "Керівництво командою, моушн-дизайн, анімація логотипів та VFX для клієнтських проєктів.",
   },
   {
-    company: 'ТОВ «АртХаус Буд»',
+    company: "ТОВ «АртХаус Буд»",
     role: "Керівник робочої групи",
     period: "2020 — 2021",
     description: "Організація робочих процесів, створення візуального контенту та анімації.",
@@ -137,7 +138,7 @@ export const education = [
     detail: "Комп’ютерні науки",
   },
   {
-    period: "2024 — 20277",
+    period: "2024 — 2027",
     place: "IT STEP Computer Academy",
     detail: "Комп’ютерна графіка і Дизайн",
   },
