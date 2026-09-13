@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: bovano-portfolio
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DATA_DIR
+        value: /var/data
+    disk:
+      name: bovano-media
+      mountPath: /var/data
+      sizeGB: 20
