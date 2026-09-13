@@ -75,7 +75,7 @@ export const projects = [
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
     poster: "/videos/logo-animation-poster.jpg",
-    video: "/videos/logo-animation.mp4",
+    video: "https://www.youtube.com/shorts/BjmHlhOY_yo",
     year: "2025",
     duration: "1:45",
   },
