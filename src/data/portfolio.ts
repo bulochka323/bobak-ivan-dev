@@ -61,14 +61,14 @@ export const skills = {
 export const projects = [
   {
     id: 1,
-    title: "MR.VAN — Motion Design Channel",
+    title: "ВИШКІЛ 2026",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
     poster: "/videos/mrvan-poster.jpg",
-    video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
-    year: "2025",
-    duration: "2:14",
-    orientation: "horizontal",
+    video: "https://youtu.be/eNugmIIpMps",
+    year: "2026",
+    duration: "4:21",
+    orientation: "vertical",
   },
   {
     id: 2,
