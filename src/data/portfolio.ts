@@ -75,7 +75,7 @@ export const projects = [
     title: "Storm/born",
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
-    poster: "/videos/logo-animation-poster.jpg",
+    poster: "/videos/storm born.jpg",
     video: "https://youtu.be/722EU6mSSIQ",
     year: "2026",
     duration: "5:03",
