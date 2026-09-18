@@ -1,126 +1,275 @@
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "../data/portfolio";
 import { ScrollReveal } from "./ScrollReveal";
 
-export function Projects() {
-  const scrollerRef = useRef<HTMLDivElement>(null);
+type Project = (typeof projects)[number];
 
-  const scrollBy = (dir: "left" | "right") => {
-    if (!scrollerRef.current) return;
-    const amount = scrollerRef.current.clientWidth * 0.75;
-    scrollerRef.current.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
+function FeedModal({
+  startIndex,
+  onClose,
+}: {
+  startIndex: number;
+  onClose: () => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(startIndex);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowUp" || e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") goNext();
+    };
+
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  // Скролимо до стартового відео
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const slide = el.children[startIndex] as HTMLElement;
+    if (slide) {
+      slide.scrollIntoView({ behavior: "instant", block: "start" });
+    }
+  }, [startIndex]);
+
+  // Відстежуємо який слайд зараз видно
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number((entry.target as HTMLElement).dataset.index);
+            setCurrent(index);
+          }
+        });
+      },
+      { root: el, threshold: 0.6 }
+    );
+
+    Array.from(el.children).forEach((child) => observer.observe(child));
+    return () => observer.disconnect();
+  }, []);
+
+  const goPrev = () => {
+    const el = containerRef.current;
+    if (!el) return;
+    const prev = Math.max(0, current - 1);
+    const slide = el.children[prev] as HTMLElement;
+    slide?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  return (
-    <section id="projects" className="py-24 md:py-32">
-      <div className="px-5 md:px-8 mx-auto max-w-6xl">
-        <ScrollReveal>
-          <div className="flex items-end justify-between gap-4 mb-10">
-            <div>
-              <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
-                Projects
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
-                Вибрані проєкти
-              </h2>
-              <p className="text-[var(--color-text-secondary)] max-w-xl">
-                Свайпай або скроль — короткі відео прямо тут
-              </p>
+  const goNext = () => {
+    const el = containerRef.current;
+    if (!el) return;
+    const next = Math.min(projects.length - 1, current + 1);
+    const slide = el.children[next] as HTMLElement;
+    slide?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const openVideo = (project: Project) => {
+    // Відкриваємо відео в новому вікні / або можна зробити окремий плеєр
+    if (project.video.includes("youtube.com") || project.video.includes("youtu.be")) {
+      window.open(project.video, "_blank");
+    } else if (project.video.includes("vimeo.com")) {
+      window.open(project.video, "_blank");
+    } else {
+      window.open(project.video, "_blank");
+    }
+  };
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] bg-black">
+      {/* Кнопка закрити */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+        aria-label="Закрити"
+      >
+        <X size={22} />
+      </button>
+
+      {/* Кнопки по боках */}
+      <button
+        onClick={goPrev}
+        disabled={current === 0}
+        className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white transition-opacity ${
+          current === 0 ? "opacity-30" : "opacity-90 hover:bg-black/60"
+        }`}
+        aria-label="Попереднє"
+      >
+        <ChevronLeft size={24} />
+      </button>
+
+      <button
+        onClick={goNext}
+        disabled={current === projects.length - 1}
+        className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white transition-opacity ${
+          current === projects.length - 1 ? "opacity-30" : "opacity-90 hover:bg-black/60"
+        }`}
+        aria-label="Наступне"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Вертикальна стрічка */}
+      <div
+        ref={containerRef}
+        className="h-full w-full overflow-y-auto snap-y snap-mandatory"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            data-index={index}
+            className="h-full w-full snap-start snap-always relative flex flex-col"
+          >
+            {/* Прев’ю (постер) */}
+            <div className="relative flex-1 bg-black">
+              <img
+                src={project.poster}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+
+              {/* Затемнення знизу для тексту */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* Кнопка Play по центру */}
+              <button
+                onClick={() => openVideo(project)}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-[var(--color-accent)] flex items-center justify-center shadow-xl active:scale-95 transition-transform">
+                  <Play size={28} className="text-black ml-1" fill="currentColor" />
+                </div>
+              </button>
             </div>
 
-            {/* Кнопки навігації стрічки (десктоп) */}
-            <div className="hidden sm:flex gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => scrollBy("left")}
-                className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
-                aria-label="Попередні"
-              >
-                ←
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollBy("right")}
-                className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
-                aria-label="Наступні"
-              >
-                →
-              </button>
+            {/* Інфо внизу */}
+            <div className="absolute bottom-0 left-0 right-0 p-5 pb-8 text-white">
+              <div className="flex items-end justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-bold leading-tight">{project.title}</h3>
+                  <p className="mt-1 text-sm text-white/70 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs rounded-full border border-white/30 px-2.5 py-1 text-white/80"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <span className="text-xs text-white/50 shrink-0">{project.year}</span>
+              </div>
             </div>
           </div>
-        </ScrollReveal>
-      </div>
-
-      {/* Горизонтальна стрічка */}
-      <div
-        ref={scrollerRef}
-        className="flex gap-5 overflow-x-auto px-5 md:px-8 pb-4 snap-x snap-mandatory scroll-smooth"
-        style={{
-          scrollbarWidth: "thin",
-          scrollbarColor: "var(--color-border) transparent",
-        }}
-      >
-        {projects.map((project) => (
-          <article
-            key={project.id}
-            className="snap-start shrink-0 w-[85vw] sm:w-[400px] md:w-[460px] rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]"
-          >
-            <div className="aspect-video relative bg-black group">
-              <video
-                src={project.video}
-                poster={project.poster}
-                muted
-                loop
-                playsInline
-                controls
-                preload="metadata"
-                className="w-full h-full object-cover"
-                onMouseEnter={(e) => {
-                  const v = e.currentTarget;
-                  v.play().catch(() => {});
-                }}
-                onMouseLeave={(e) => {
-                  const v = e.currentTarget;
-                  v.pause();
-                  v.currentTime = 0;
-                }}
-              />
-            </div>
-
-            <div className="p-5">
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <h3 className="text-lg font-semibold leading-snug">
-                  {project.title}
-                </h3>
-                <span className="text-xs text-[var(--color-muted)] shrink-0 mt-1">
-                  {project.year}
-                </span>
-              </div>
-
-              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2 mb-3">
-                {project.description}
-              </p>
-
-              <ul className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="text-xs rounded-full border border-[var(--color-border)] px-2.5 py-1 text-[var(--color-muted)]"
-                  >
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
         ))}
-
-        {/* невеликий відступ справа */}
-        <div className="shrink-0 w-2" />
       </div>
+    </div>,
+    document.body
+  );
+}
+
+export function Projects() {
+  const [feedIndex, setFeedIndex] = useState<number | null>(null);
+
+  return (
+    <section id="projects" className="py-24 md:py-32 px-5 md:px-8">
+      <div className="mx-auto max-w-6xl">
+        <ScrollReveal>
+          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
+            Projects
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            Вибрані проєкти
+          </h2>
+          <p className="text-[var(--color-text-secondary)] max-w-xl mb-14">
+            Натисни на проєкт — відкриється стрічка як у TikTok
+          </p>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          {projects.map((project, i) => (
+            <ScrollReveal key={project.id} delay={i * 0.08}>
+              <button
+                type="button"
+                onClick={() => setFeedIndex(i)}
+                className="group w-full text-left block relative rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors hover:border-[var(--color-accent)]/50"
+              >
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img
+                    src={project.poster}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-full bg-[var(--color-accent)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play
+                        size={22}
+                        className="text-[var(--color-bg)] ml-0.5"
+                        fill="currentColor"
+                      />
+                    </div>
+                  </div>
+
+                  {project.duration && (
+                    <div className="absolute bottom-3 right-3 rounded-md bg-black/70 backdrop-blur px-2 py-0.5 text-xs text-white">
+                      {project.duration}
+                    </div>
+                  )}
+
+                  <div className="absolute top-4 right-4 rounded-full bg-[var(--color-bg)]/70 backdrop-blur px-3 py-1 text-xs text-[var(--color-text-secondary)]">
+                    {project.year}
+                  </div>
+                </div>
+
+                <div className="p-5 md:p-6">
+                  <h3 className="text-xl font-semibold group-hover:text-[var(--color-accent)] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-2">
+                    {project.description}
+                  </p>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="text-xs rounded-full border border-[var(--color-border)] px-2.5 py-1 text-[var(--color-muted)]"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </button>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+
+      {feedIndex !== null && (
+        <FeedModal startIndex={feedIndex} onClose={() => setFeedIndex(null)} />
+      )}
     </section>
   );
 }
