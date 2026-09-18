@@ -6,6 +6,24 @@ import { ScrollReveal } from "./ScrollReveal";
 
 type Project = (typeof projects)[number];
 
+function isYouTube(url: string) {
+  return url.includes("youtube.com") || url.includes("youtu.be");
+}
+
+function isVimeo(url: string) {
+  return url.includes("vimeo.com");
+}
+
+function getYouTubeId(url: string) {
+  const match = url.match(/(?:youtu\.be\/|v=|\/embed\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function getVimeoId(url: string) {
+  const match = url.match(/vimeo\.com\/(\d+)/);
+  return match ? match[1] : null;
+}
+
 function FeedModal({
   startIndex,
   onClose,
@@ -15,6 +33,11 @@ function FeedModal({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(startIndex);
+  const [playingId, setPlayingId] = useState<number | null>(null);
+
+  // Нескінченний список (3 копії)
+  const looped = [...projects, ...projects, ...projects];
+  const middleStart = projects.length;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -30,17 +53,21 @@ function FeedModal({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
-  }, []);
+  }, [current]);
 
+  // Старт з середньої копії
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const slide = el.children[startIndex] as HTMLElement;
+    const start = middleStart + startIndex;
+    const slide = el.children[start] as HTMLElement;
     if (slide) {
       slide.scrollIntoView({ behavior: "instant" as ScrollBehavior, block: "start" });
+      setCurrent(start);
     }
   }, [startIndex]);
 
+  // Слідкуємо який слайд видно
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -50,21 +77,48 @@ function FeedModal({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = Number((entry.target as HTMLElement).dataset.index);
-            if (!Number.isNaN(index)) setCurrent(index);
+            if (!Number.isNaN(index)) {
+              setCurrent(index);
+              setPlayingId(null); // зупиняємо відео при скролі
+            }
           }
         });
       },
-      { root: el, threshold: 0.6 }
+      { root: el, threshold: 0.65 }
     );
 
     Array.from(el.children).forEach((child) => observer.observe(child));
     return () => observer.disconnect();
   }, []);
 
+  // Підтримка нескінченності — якщо дійшли до краю, стрибаємо в середину
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const slideHeight = el.clientHeight;
+      const scrollTop = el.scrollTop;
+      const total = looped.length * slideHeight;
+
+      // Якщо близько до кінця — стрибок назад
+      if (scrollTop > total - slideHeight * 2) {
+        el.scrollTop = scrollTop - projects.length * slideHeight;
+      }
+      // Якщо близько до початку — стрибок вперед
+      if (scrollTop < slideHeight) {
+        el.scrollTop = scrollTop + projects.length * slideHeight;
+      }
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
   const goPrev = () => {
     const el = containerRef.current;
     if (!el) return;
-    const prev = Math.max(0, current - 1);
+    const prev = current - 1;
     const slide = el.children[prev] as HTMLElement;
     slide?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -72,13 +126,50 @@ function FeedModal({
   const goNext = () => {
     const el = containerRef.current;
     if (!el) return;
-    const next = Math.min(projects.length - 1, current + 1);
+    const next = current + 1;
     const slide = el.children[next] as HTMLElement;
     slide?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const openVideo = (project: Project) => {
-    window.open(project.video, "_blank");
+  const renderPlayer = (project: Project) => {
+    if (isYouTube(project.video)) {
+      const id = getYouTubeId(project.video);
+      if (!id) return null;
+      return (
+        <iframe
+          src={`https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+          title={project.title}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      );
+    }
+
+    if (isVimeo(project.video)) {
+      const id = getVimeoId(project.video);
+      if (!id) return null;
+      return (
+        <iframe
+          src={`https://player.vimeo.com/video/${id}?autoplay=1`}
+          title={project.title}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      );
+    }
+
+    return (
+      <video
+        src={project.video}
+        poster={project.poster}
+        controls
+        autoPlay
+        playsInline
+        className="absolute inset-0 w-full h-full object-contain bg-black"
+      />
+    );
   };
 
   return createPortal(
@@ -86,7 +177,7 @@ function FeedModal({
       {/* Закрити */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-20 w-11 h-11 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white"
+        className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white"
         aria-label="Закрити"
       >
         <X size={22} />
@@ -95,10 +186,7 @@ function FeedModal({
       {/* Кнопки по боках */}
       <button
         onClick={goPrev}
-        disabled={current === 0}
-        className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white ${
-          current === 0 ? "opacity-30" : "opacity-90"
-        }`}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
         aria-label="Попереднє"
       >
         <ChevronLeft size={24} />
@@ -106,69 +194,78 @@ function FeedModal({
 
       <button
         onClick={goNext}
-        disabled={current === projects.length - 1}
-        className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white ${
-          current === projects.length - 1 ? "opacity-30" : "opacity-90"
-        }`}
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
         aria-label="Наступне"
       >
         <ChevronRight size={24} />
       </button>
 
-      {/* Вертикальна стрічка */}
+      {/* Стрічка */}
       <div
         ref={containerRef}
         className="h-full w-full overflow-y-auto snap-y snap-mandatory"
         style={{ scrollbarWidth: "none" }}
       >
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            data-index={index}
-            className="h-[100dvh] w-full snap-start snap-always relative"
-          >
-            <img
-              src={project.poster}
-              alt={project.title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+        {looped.map((project, index) => {
+          const isPlaying = playingId === project.id && current === index;
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-            {/* Play */}
-            <button
-              onClick={() => openVideo(project)}
-              className="absolute inset-0 flex items-center justify-center z-10"
+          return (
+            <div
+              key={`${project.id}-${index}`}
+              data-index={index}
+              className="h-[100dvh] w-full snap-start snap-always relative bg-black"
             >
-              <div className="w-16 h-16 rounded-full bg-[var(--color-accent)] flex items-center justify-center shadow-xl">
-                <Play size={28} className="text-black ml-1" fill="currentColor" />
-              </div>
-            </button>
+              {/* Прев’ю або плеєр */}
+              {isPlaying ? (
+                renderPlayer(project)
+              ) : (
+                <>
+                  <img
+                    src={project.poster}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-            {/* Текст внизу */}
-            <div className="absolute bottom-0 left-0 right-0 p-5 pb-10 text-white z-10">
-              <div className="flex items-end justify-between gap-3">
-                <div>
-                  <h3 className="text-xl font-bold">{project.title}</h3>
-                  <p className="mt-1 text-sm text-white/70 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs rounded-full border border-white/30 px-2.5 py-1 text-white/80"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Кнопка Play */}
+                  <button
+                    onClick={() => setPlayingId(project.id)}
+                    className="absolute inset-0 flex items-center justify-center z-10"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-[var(--color-accent)] flex items-center justify-center shadow-xl">
+                      <Play size={28} className="text-black ml-1" fill="currentColor" />
+                    </div>
+                  </button>
+                </>
+              )}
+
+              {/* Текст внизу (ховаємо коли грає) */}
+              {!isPlaying && (
+                <div className="absolute bottom-0 left-0 right-0 p-5 pb-10 text-white z-10 pointer-events-none">
+                  <div className="flex items-end justify-between gap-3">
+                    <div>
+                      <h3 className="text-xl font-bold">{project.title}</h3>
+                      <p className="mt-1 text-sm text-white/70 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs rounded-full border border-white/30 px-2.5 py-1 text-white/80"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <span className="text-xs text-white/50 shrink-0">{project.year}</span>
                   </div>
                 </div>
-                <span className="text-xs text-white/50 shrink-0">{project.year}</span>
-              </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>,
     document.body
@@ -189,7 +286,7 @@ export function Projects() {
             Вибрані проєкти
           </h2>
           <p className="text-[var(--color-text-secondary)] max-w-xl mb-14">
-            Натисни на проєкт — відкриється стрічка як у TikTok
+            Натисни на проєкт — стрічка як у TikTok
           </p>
         </ScrollReveal>
 
