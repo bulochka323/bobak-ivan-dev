@@ -3,14 +3,14 @@ export const personalInfo = {
   role: "Motion Designer",
   tagline:
     "Моушн-дизайнер зі смаком до сучасної динамічної анімації. Створюю стильні intro, анімую логотипи та текст, перетворюючи звичайні ідеї на крутий візуальний продукт.",
-  email: "kalapach.endryu@gmail.com",
+  email: "вввввввввввв",
   phone: "+380930969406",
   location: "Україна / Львів",
   availability: "Відкритий до співпраці",
   socials: {
     telegram: "https://t.me/IvanBobak",
     whatsapp: "https://wa.me/380930969406",
-    portfolio: "https://mrvan.myportfolio.com",
+    portfolio: "",
   },
 };
 
