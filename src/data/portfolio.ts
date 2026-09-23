@@ -53,7 +53,7 @@ export const skills = {
     },
     {
       title: "Tools",
-      items: ["After Effects", "Premiere Pro", "Illustrator", "Photoshop"],
+      items: ["After Effects Premiere Pro Premiere Pro", "", "", "Photoshop"],
     },
   ],
 };
