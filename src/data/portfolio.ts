@@ -64,7 +64,7 @@ export const projects = [
     title: "12x",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
-    poster: "/videos/mrvan-poster.jpg",
+    poster: "/videos/Sequence 01_1091.jpg",
     video: "https://youtube.com/shorts/gRRcW5RnGlw?feature=share",
     year: "2026",
     duration: "4:21",
