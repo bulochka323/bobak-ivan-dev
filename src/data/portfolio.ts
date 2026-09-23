@@ -3,7 +3,7 @@ export const personalInfo = {
   role: "Motion Designer",
   tagline:
     "Моушн-дизайнер зі смаком до сучасної динамічної анімації. Створюю стильні intro, анімую логотипи та текст, перетворюючи звичайні ідеї на крутий візуальний продукт.",
-  email: "hello@bovano.com",
+  email: "kalapach.endryu@gmail.com",
   phone: "+380930969406",
   location: "Україна / Львів",
   availability: "Відкритий до співпраці",
