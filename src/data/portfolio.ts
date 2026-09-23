@@ -129,11 +129,11 @@ export const projects = [
 
 export const experience = [
   {
-    company: "ТОВ «Вентвам»",
-    role: "Керівник робочої групи",
-    period: "2021 — 2026",
+    company: "",
+    role: "",
+    period: "",
     description:
-      "Керівництво командою, моушн-дизайн, анімація логотипів та VFX для клієнтських проєктів.",
+      "",
   },
   {
     company: "ТОВ «АртХаус Буд»",
