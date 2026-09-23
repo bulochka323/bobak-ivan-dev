@@ -61,11 +61,11 @@ export const skills = {
 export const projects = [
   {
     id: 1,
-    title: "ВИШКІЛ 2026",
+    title: "12x",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
     poster: "/videos/mrvan-poster.jpg",
-    video: "https://youtu.be/eNugmIIpMps",
+    video: "https://youtube.com/shorts/gRRcW5RnGlw?feature=share",
     year: "2026",
     duration: "4:21",
     orientation: "vertical",
