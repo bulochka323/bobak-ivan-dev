@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Play, User, MessageCircle } from "lucide-react";
 import { projects } from "../data/portfolio";
 import { ScrollReveal } from "./ScrollReveal";
 
@@ -35,7 +35,6 @@ function FeedModal({
   const [current, setCurrent] = useState(startIndex);
   const [playingId, setPlayingId] = useState<number | null>(null);
 
-  // Нескінченний список (3 копії)
   const looped = [...projects, ...projects, ...projects];
   const middleStart = projects.length;
 
@@ -44,8 +43,6 @@ function FeedModal({
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowUp" || e.key === "ArrowLeft") goPrev();
-      if (e.key === "ArrowDown" || e.key === "ArrowRight") goNext();
     };
 
     window.addEventListener("keydown", onKey);
@@ -53,9 +50,8 @@ function FeedModal({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
-  }, [current]);
+  }, [onClose]);
 
-  // Старт з середньої копії
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -67,7 +63,6 @@ function FeedModal({
     }
   }, [startIndex]);
 
-  // Слідкуємо який слайд видно
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -79,7 +74,7 @@ function FeedModal({
             const index = Number((entry.target as HTMLElement).dataset.index);
             if (!Number.isNaN(index)) {
               setCurrent(index);
-              setPlayingId(null); // зупиняємо відео при скролі
+              setPlayingId(null);
             }
           }
         });
@@ -91,7 +86,6 @@ function FeedModal({
     return () => observer.disconnect();
   }, []);
 
-  // Підтримка нескінченності — якщо дійшли до краю, стрибаємо в середину
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -101,11 +95,9 @@ function FeedModal({
       const scrollTop = el.scrollTop;
       const total = looped.length * slideHeight;
 
-      // Якщо близько до кінця — стрибок назад
       if (scrollTop > total - slideHeight * 2) {
         el.scrollTop = scrollTop - projects.length * slideHeight;
       }
-      // Якщо близько до початку — стрибок вперед
       if (scrollTop < slideHeight) {
         el.scrollTop = scrollTop + projects.length * slideHeight;
       }
@@ -115,20 +107,18 @@ function FeedModal({
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const goPrev = () => {
-    const el = containerRef.current;
-    if (!el) return;
-    const prev = current - 1;
-    const slide = el.children[prev] as HTMLElement;
-    slide?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const goToAbout = () => {
+    onClose();
+    setTimeout(() => {
+      document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
-  const goNext = () => {
-    const el = containerRef.current;
-    if (!el) return;
-    const next = current + 1;
-    const slide = el.children[next] as HTMLElement;
-    slide?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const goToContact = () => {
+    onClose();
+    setTimeout(() => {
+      document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const renderPlayer = (project: Project) => {
@@ -183,21 +173,22 @@ function FeedModal({
         <X size={22} />
       </button>
 
-      {/* Кнопки по боках */}
+      {/* Ліва кнопка → Про мене */}
       <button
-        onClick={goPrev}
+        onClick={goToAbout}
         className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
-        aria-label="Попереднє"
+        aria-label="Про мене"
       >
-        <ChevronLeft size={24} />
+        <User size={22} />
       </button>
 
+      {/* Права кнопка → Контакт */}
       <button
-        onClick={goNext}
+        onClick={goToContact}
         className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
-        aria-label="Наступне"
+        aria-label="Написати"
       >
-        <ChevronRight size={24} />
+        <MessageCircle size={22} />
       </button>
 
       {/* Стрічка */}
@@ -215,7 +206,6 @@ function FeedModal({
               data-index={index}
               className="h-[100dvh] w-full snap-start snap-always relative bg-black"
             >
-              {/* Прев’ю або плеєр */}
               {isPlaying ? (
                 renderPlayer(project)
               ) : (
@@ -227,7 +217,6 @@ function FeedModal({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                  {/* Кнопка Play */}
                   <button
                     onClick={() => setPlayingId(project.id)}
                     className="absolute inset-0 flex items-center justify-center z-10"
@@ -239,7 +228,6 @@ function FeedModal({
                 </>
               )}
 
-              {/* Текст внизу (ховаємо коли грає) */}
               {!isPlaying && (
                 <div className="absolute bottom-0 left-0 right-0 p-5 pb-10 text-white z-10 pointer-events-none">
                   <div className="flex items-end justify-between gap-3">
