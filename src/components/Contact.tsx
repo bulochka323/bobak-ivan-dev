@@ -20,7 +20,6 @@ export function Contact() {
 
         <ScrollReveal delay={0.05}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {/* Телефон */}
             <a
               href={`tel:${personalInfo.phone}`}
               className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 hover:border-[var(--color-accent)]/50 transition-colors group"
@@ -34,7 +33,6 @@ export function Contact() {
               </p>
             </a>
 
-            {/* Email */}
             <a
               href={`mailto:${personalInfo.email}`}
               className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 hover:border-[var(--color-accent)]/50 transition-colors group"
@@ -48,7 +46,6 @@ export function Contact() {
               </p>
             </a>
 
-            {/* Месенджери */}
             <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 sm:col-span-2 lg:col-span-1">
               <MessageCircle size={20} className="text-[var(--color-accent)] mb-4" />
               <p className="text-xs uppercase tracking-wider text-[var(--color-muted)] mb-3">
