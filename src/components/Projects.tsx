@@ -262,14 +262,8 @@ export function Projects() {
     <section id="projects" className="py-24 md:py-32 px-5 md:px-8">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
+          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-10">
             Роботи
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Вибрані проєкти
-          </h2>
-          <p className="text-[var(--color-text-secondary)] max-w-xl mb-14">
-            Натисни на проєкт — стрічка як у TikTok
           </p>
         </ScrollReveal>
 
