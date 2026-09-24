@@ -15,7 +15,9 @@ function isVimeo(url: string) {
 }
 
 function getYouTubeId(url: string) {
-  const match = url.match(/(?:youtu\.be\/|v=|\/embed\/)([a-zA-Z0-9_-]{11})/);
+  const match = url.match(
+    /(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([a-zA-Z0-9_-]{11})/
+  );
   return match ? match[1] : null;
 }
 
@@ -40,11 +42,9 @@ function FeedModal({
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
@@ -107,10 +107,10 @@ function FeedModal({
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  const goToAbout = () => {
+  const goToSkills = () => {
     onClose();
     setTimeout(() => {
-      document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+      document.querySelector("#skills")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
 
@@ -164,7 +164,6 @@ function FeedModal({
 
   return createPortal(
     <div className="fixed inset-0 z-[100] bg-black">
-      {/* Закрити */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white"
@@ -173,16 +172,14 @@ function FeedModal({
         <X size={22} />
       </button>
 
-      {/* Ліва кнопка → Про мене */}
       <button
-        onClick={goToAbout}
+        onClick={goToSkills}
         className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
-        aria-label="Про мене"
+        aria-label="Навички"
       >
         <User size={22} />
       </button>
 
-      {/* Права кнопка → Контакт */}
       <button
         onClick={goToContact}
         className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/40 backdrop-blur flex items-center justify-center text-white"
@@ -191,7 +188,6 @@ function FeedModal({
         <MessageCircle size={22} />
       </button>
 
-      {/* Стрічка */}
       <div
         ref={containerRef}
         className="h-full w-full overflow-y-auto snap-y snap-mandatory"
@@ -216,7 +212,6 @@ function FeedModal({
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
                   <button
                     onClick={() => setPlayingId(project.id)}
                     className="absolute inset-0 flex items-center justify-center z-10"
@@ -268,7 +263,7 @@ export function Projects() {
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
           <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
-            Projects
+            Роботи
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Вибрані проєкти
