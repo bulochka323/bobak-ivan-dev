@@ -5,17 +5,8 @@ export function About() {
   return (
     <section id="about" className="py-24 md:py-32 px-5 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
-            Про мене
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12 max-w-2xl">
-            Motion з характером
-          </h2>
-        </ScrollReveal>
-
         <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-          {/* Photo */}
+          {/* Фото */}
           <ScrollReveal className="md:col-span-4" direction="right">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]">
               <img
@@ -23,7 +14,6 @@ export function About() {
                 alt={personalInfo.name}
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
-                  // fallback якщо фото ще немає
                   (e.target as HTMLImageElement).src =
                     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80";
                 }}
@@ -36,7 +26,7 @@ export function About() {
             </div>
           </ScrollReveal>
 
-          {/* Text */}
+          {/* Текст */}
           <div className="md:col-span-8 space-y-6">
             {about.paragraphs.map((p, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
