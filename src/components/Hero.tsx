@@ -28,12 +28,10 @@ export function Hero() {
       id="hero"
       className="relative min-h-[100dvh] flex flex-col justify-center px-5 md:px-8 overflow-hidden"
     >
-      {/* Subtle ambient glow */}
       <div
         className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-[120px]"
         style={{
-          background:
-            "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--color-accent) 0%, transparent 70%)",
         }}
       />
 
@@ -43,13 +41,6 @@ export function Hero() {
         animate="show"
         className="relative mx-auto max-w-6xl w-full pt-24 pb-16"
       >
-        <motion.p
-          variants={reduced ? undefined : item}
-          className="mb-4 text-sm font-medium tracking-widest uppercase text-[var(--color-accent)]"
-        >
-          {personalInfo.availability}
-        </motion.p>
-
         <motion.h1
           variants={reduced ? undefined : item}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl"
@@ -102,13 +93,13 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <a
-          href="#about"
+          href="#skills"
           onClick={(e) => {
             e.preventDefault();
-            document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+            document.querySelector("#skills")?.scrollIntoView({ behavior: "smooth" });
           }}
           className="flex flex-col items-center gap-2 text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors"
-          aria-label="Scroll to about"
+          aria-label="Скрол вниз"
         >
           <span className="text-xs tracking-widest uppercase">Скрол</span>
           <motion.div
