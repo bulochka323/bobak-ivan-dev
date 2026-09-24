@@ -7,7 +7,7 @@ export function Skills() {
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
           <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
-            Skills
+            Навички
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">
             Інструменти та експертиза
