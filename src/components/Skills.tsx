@@ -6,12 +6,9 @@ export function Skills() {
     <section id="skills" className="py-24 md:py-32 px-5 md:px-8 bg-[var(--color-surface)]">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
+          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-10">
             Навички
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-12">
-            Інструменти та експертиза
-          </h2>
         </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
