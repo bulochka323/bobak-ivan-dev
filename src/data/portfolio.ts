@@ -3,21 +3,19 @@ export const personalInfo = {
   role: "Motion Designer",
   tagline:
     "Моушн-дизайнер зі смаком до сучасної динамічної анімації. Створюю стильні intro, анімую логотипи та текст, перетворюючи звичайні ідеї на крутий візуальний продукт.",
-  email: "вввввввввввв",
+  email: "hello@bovano.com",
   phone: "+380930969406",
   location: "Україна / Львів",
-  availability: "Відкритий до співпраці",
   socials: {
     telegram: "https://t.me/IvanBobak",
     whatsapp: "https://wa.me/380930969406",
-    portfolio: "",
   },
 };
 
 export const about = {
   paragraphs: [
-    "Хочете, щоб ваш бренд виділявся на тлі конкурентів? Перетворіть статичне лого в епічну історію за допомогою моушн-дизайну. У моєму шоурілі представлені роботи, які демонструють, як правильно підібраний рух може підсилити візуальну айдентику вашого проєкту.",
-    "Я спеціалізуюся на анімації логотипів, візуальних ефектах (VFX) та текстовій анімації — створюю унікальні intro для подкастів, YouTube та презентацій, працюю з частинками, світловими ефектами та елегантними титрами.",
+    "Хочете, щоб ваш бренд виділявся на тлі конкурентів? Перетворіть статичне лого в епічну історію за допомогою моушн-дизайну.",
+    "Я спеціалізуюся на анімації логотипів, візуальних ефектах (VFX) та текстовій анімації.",
   ],
   specialties: [
     {
@@ -52,8 +50,8 @@ export const skills = {
       items: ["Particles", "Light Effects", "Electric Discharges", "Visual Effects"],
     },
     {
-      title: "Tools",
-      items: ["After Effects Premiere Pro Premiere Pro", "", "", "Photoshop"],
+      title: "Інструменти",
+      items: ["After Effects", "Premiere Pro", "Illustrator", "Photoshop"],
     },
   ],
 };
@@ -64,10 +62,10 @@ export const projects = [
     title: "12x",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
-    poster: "/videos/Sequence 01_1091.jpg",
-    video: "https://youtube.com/shorts/gRRcW5RnGlw?feature=share",
+    poster: "/videos/Sequence_01_1091.jpg",
+    video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
     year: "2026",
-    duration: "4:21",
+    duration: "0:21",
     orientation: "vertical",
   },
   {
@@ -75,7 +73,7 @@ export const projects = [
     title: "Storm/born",
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
-    poster: "/videos/storm born.jpg",
+    poster: "/videos/storm-born.jpg",
     video: "https://youtu.be/722EU6mSSIQ",
     year: "2026",
     duration: "5:03",
@@ -120,20 +118,20 @@ export const projects = [
     description: "Стильна текстова анімація з мінімалістичною графікою.",
     tags: ["Typography", "Titling"],
     poster: "/videos/fact-poster.jpg",
-    video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
+    video: "https://www.youtube.com/shorts/XXXXXXXXXXX",
     year: "2024",
-    duration: "1:12",
+    duration: "0:45",
     orientation: "vertical",
   },
 ];
 
 export const experience = [
   {
-    company: "",
-    role: "",
-    period: "",
+    company: "ТОВ «Вентвам»",
+    role: "Керівник робочої групи",
+    period: "2021 — 2026",
     description:
-      "",
+      "Керівництво командою, моушн-дизайн, анімація логотипів та VFX для клієнтських проєктів.",
   },
   {
     company: "ТОВ «АртХаус Буд»",
@@ -162,9 +160,7 @@ export const education = [
 ];
 
 export const navLinks = [
-  { label: "Про мене", href: "#about" },
   { label: "Навички", href: "#skills" },
   { label: "Роботи", href: "#projects" },
-  { label: "Досвід", href: "#experience" },
   { label: "Контакт", href: "#contact" },
 ];
