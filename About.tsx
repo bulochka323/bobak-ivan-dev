@@ -1,9 +1,27 @@
-import { about, personalInfo } from "../data/portfolio";
-import { ScrollReveal } from "./ScrollReveal";
+import { motion } from "framer-motion";
+
+import {
+  sectionContainer,
+  sectionReveal,
+  fadeUp,
+} from "../animations";
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32 px-5 md:px-8">
+    <motion.section
+  id="about"
+
+  variants={sectionContainer}
+
+  initial="hidden"
+
+  whileInView="show"
+
+  viewport={{
+    once: true,
+    amount: 0.15,
+  }}
+> className="py-24 md:py-32 px-5 md:px-8">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
           <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-3">
@@ -92,6 +110,6 @@ export function About() {
           </div>
         </div>
       </div>
-    </section>
+   </motion.section>
   );
 }
