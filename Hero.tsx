@@ -1,7 +1,12 @@
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { personalInfo } from "../data/portfolio";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+
+import {
+  heroContainer,
+  heroItem,
+} from "../animations";
 
 const container: Variants = {
   hidden: { opacity: 0 },
