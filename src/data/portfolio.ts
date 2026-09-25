@@ -56,12 +56,25 @@ export const skills = {
   ],
 };
 
+export const projectCategories = [
+  { id: "all", label: "Усі роботи" },
+  { id: "editing", label: "Video Editing" },
+  { id: "motion", label: "Motion Design" },
+  { id: "logo", label: "Logo Animation" },
+  { id: "vfx", label: "VFX" },
+  { id: "ai", label: "AI / Generative" },
+  { id: "social", label: "Social / Reels" },
+];
+
 export const projects = [
   {
     id: 1,
     title: "12x",
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
+    
+    categories: ["logo", "motion", "social"],
+    
     poster: "/videos/Sequence 01_1091.jpg",
     video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
     year: "2026",
@@ -73,6 +86,9 @@ export const projects = [
     title: "Storm/born",
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
+
+    categories: ["logo", "motion", "vfx"],
+    
     poster: "/videos/storm born.jpg",
     video: "https://youtu.be/722EU6mSSIQ",
     year: "2026",
@@ -123,6 +139,21 @@ export const projects = [
     duration: "0:45",
     orientation: "vertical",
   },
+  {
+  id: 7,
+  title: "Camp Promo",
+  description: "Динамічний проморолик із монтажем, motion-графікою та саунд-дизайном.",
+  tags: ["Editing", "Motion", "Sound Design"],
+
+  categories: ["editing", "motion", "social"],
+
+  poster: "/videos/camp-poster.jpg",
+  video: "/videos/camp.mp4",
+
+  year: "2026",
+  duration: "0:45",
+  orientation: "horizontal",
+},
 ];
 
 export const experience = [
