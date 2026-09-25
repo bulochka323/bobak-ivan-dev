@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
-import { projects } from "../data/portfolio";
+import { projects, projectCategories } from "../data/portfolio";
 import { ScrollReveal } from "./ScrollReveal";
 
 type Project = (typeof projects)[number];
@@ -130,7 +130,7 @@ function FeedModal({
         className="h-full w-full overflow-y-auto snap-y snap-mandatory"
         style={{ scrollbarWidth: "none" }}
       >
-        {projects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <div
             key={project.id}
             data-index={index}
@@ -189,9 +189,32 @@ function FeedModal({
 }
 
 export function Projects() {
+  const [activeCategory, setActiveCategory] = useState("all");
+  
+  const filteredProjects =
+  activeCategory === "all"
+    ? projects
+    : projects.filter((project) =>
+        project.categories.includes(activeCategory)
+      );
   const [feedIndex, setFeedIndex] = useState<number | null>(null);
 
   return (
+   <div className="project-filters">
+  {projectCategories.map((category) => (
+    <button
+      key={category.id}
+      onClick={() => setActiveCategory(category.id)}
+      className={
+        activeCategory === category.id
+          ? "filter-button active"
+          : "filter-button"
+      }
+    >
+      {category.label}
+    </button>
+  ))}
+</div>
     <section id="projects" className="py-24 md:py-32 px-5 md:px-8">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
