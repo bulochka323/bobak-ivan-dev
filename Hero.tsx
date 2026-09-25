@@ -43,20 +43,20 @@ export function Hero() {
       />
 
       <motion.div
-        variants={reduced ? undefined : container}
+       variants={reduced ? undefined : heroContainer}
         initial={reduced ? false : "hidden"}
         animate="show"
         className="relative mx-auto max-w-6xl w-full pt-24 pb-16"
       >
         <motion.p
-          variants={reduced ? undefined : item}
+          variants={reduced ? undefined : heroItem}
           className="mb-4 text-sm font-medium tracking-widest uppercase text-[var(--color-accent)]"
         >
           {personalInfo.availability}
         </motion.p>
 
         <motion.h1
-          variants={reduced ? undefined : item}
+          variants={reduced ? undefined : heroItem}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl"
         >
           {personalInfo.name}
@@ -67,14 +67,14 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          variants={reduced ? undefined : item}
+          variants={reduced ? undefined : heroItem}
           className="mt-6 max-w-xl text-base md:text-lg text-[var(--color-text-secondary)] leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
 
         <motion.div
-          variants={reduced ? undefined : item}
+          variants={reduced ? undefined : heroItem}
           className="mt-10 flex flex-wrap gap-4"
         >
           <a
