@@ -73,7 +73,8 @@ export const projects = [
     description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
     tags: ["Logo Animation", "Branding"],
     
-    categories: ["logo", "motion", "social"],
+    categories: 
+      ["all"],
     
     poster: "/videos/Sequence 01_1091.jpg",
     video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
@@ -87,7 +88,7 @@ export const projects = [
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
 
-    categories: ["logo", "motion", "vfx"],
+    categories: ["editing"],
     
     poster: "/videos/storm born.jpg",
     video: "https://youtu.be/722EU6mSSIQ",
@@ -100,6 +101,7 @@ export const projects = [
     title: "VFX Showreel",
     description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
     tags: ["VFX", "Particles", "Compositing"],
+    categories: ["editing"],
     poster: "/videos/vfx-showreel-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2025",
@@ -111,6 +113,7 @@ export const projects = [
     title: "Благодійне бюро",
     description: "Кінематографічне intro з об’ємною графікою та атмосферним освітленням.",
     tags: ["Intro", "3D", "Motion"],
+    categories: ["editing"],
     poster: "/videos/charity-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2024",
@@ -122,6 +125,7 @@ export const projects = [
     title: "Black Friday +30%",
     description: "Яскрава промо-анімація для акції з динамічною типографікою.",
     tags: ["Typography", "Promo", "Motion"],
+    categories: ["editing"],
     poster: "/videos/black-friday-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2024",
@@ -133,6 +137,7 @@ export const projects = [
     title: "Цікавий факт",
     description: "Стильна текстова анімація з мінімалістичною графікою.",
     tags: ["Typography", "Titling"],
+    categories: ["editing"],
     poster: "/videos/fact-poster.jpg",
     video: "https://www.youtube.com/shorts/XXXXXXXXXXX",
     year: "2024",
