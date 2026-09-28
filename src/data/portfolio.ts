@@ -1,5 +1,5 @@
 export const personalInfo = {
-  name: "Bovano",
+  name: "Ivan Bobak",
   role: "Video Editor / Motion Designer",
   availability: "Створюй те що залишає слід",
 
