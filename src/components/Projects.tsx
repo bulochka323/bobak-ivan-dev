@@ -29,9 +29,11 @@ function getVimeoId(url: string) {
 function FeedModal({
   startIndex,
   onClose,
+  items,
 }: {
   startIndex: number;
   onClose: () => void;
+  items: Project[];
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [current, setCurrent] = useState(startIndex);
@@ -343,7 +345,11 @@ export function Projects() {
       </div>
 
       {feedIndex !== null && (
-        <FeedModal startIndex={feedIndex} onClose={() => setFeedIndex(null)} />
+       <FeedModal
+  startIndex={feedIndex}
+  onClose={() => setFeedIndex(null)}
+  items={filteredProjects}
+/>
       )}
     </section>
   );
