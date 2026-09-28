@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X, Play, User, MessageCircle } from "lucide-react";
-import { projects } from "../data/portfolio";
+import { projects, projectCategories } from "../data/portfolio";
 import { ScrollReveal } from "./ScrollReveal";
 
 type Project = (typeof projects)[number];
@@ -37,8 +37,8 @@ function FeedModal({
   const [current, setCurrent] = useState(startIndex);
   const [playingId, setPlayingId] = useState<number | null>(null);
 
-  const looped = [...projects, ...projects, ...projects];
-  const middleStart = projects.length;
+  const looped = [...items, ...items, ...items];
+  const middleStart = items.length;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -96,10 +96,10 @@ function FeedModal({
       const total = looped.length * slideHeight;
 
       if (scrollTop > total - slideHeight * 2) {
-        el.scrollTop = scrollTop - projects.length * slideHeight;
+        el.scrollTop = scrollTop - items.length * slideHeight;
       }
       if (scrollTop < slideHeight) {
-        el.scrollTop = scrollTop + projects.length * slideHeight;
+        el.scrollTop = scrollTop + items.length * slideHeight;
       }
     };
 
@@ -257,18 +257,40 @@ function FeedModal({
 
 export function Projects() {
   const [feedIndex, setFeedIndex] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const filteredProjects =
+    activeCategory === "all"
+      ? projects
+      : projects.filter((project) =>
+          project.categories.includes(activeCategory)
+        );
 
   return (
     <section id="projects" className="py-24 md:py-32 px-5 md:px-8">
       <div className="mx-auto max-w-6xl">
-        <ScrollReveal>
-          <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-accent)] mb-10">
-            Роботи
-          </p>
-        </ScrollReveal>
+        <div className="mb-10 flex flex-wrap gap-2">
+  {projectCategories.map((category) => (
+    <button
+      key={category.id}
+      type="button"
+      onClick={() => {
+        setActiveCategory(category.id);
+        setFeedIndex(null);
+      }}
+      className={`rounded-full px-4 py-2 text-sm border transition-all ${
+        activeCategory === category.id
+          ? "bg-[var(--color-accent)] text-[var(--color-bg)] border-[var(--color-accent)]"
+          : "border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+      }`}
+    >
+      {category.label}
+    </button>
+  ))}
+</div>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, i) => (
+          {filteredProjects.map((project, i) => (
             <ScrollReveal key={project.id} delay={i * 0.08}>
               <button
                 type="button"
