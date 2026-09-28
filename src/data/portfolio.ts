@@ -86,96 +86,108 @@ export const projectCategories = [
 export const projects = [
   {
     id: 1,
-    title: "VFX Showreel",
-    description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
-    tags: ["VFX", "Particles", "Compositing"],
-    
-    categories: 
-      ["logo", "motion", "social"],
-    
+    title: "12x",
+    description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
+    tags: ["Logo Animation", "Branding"],
+
+    categories: ["logo", "motion", "social"],
+
     poster: "/videos/Sequence 01_1091.jpg",
     video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
     year: "2026",
     duration: "0:21",
     orientation: "vertical",
   },
+
   {
     id: 2,
     title: "Storm/born",
     description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
     tags: ["Logo Animation", "After Effects"],
 
-    categories: ["editing"],
-    
+    categories: ["logo", "motion", "vfx"],
+
     poster: "/videos/storm born.jpg",
     video: "https://youtu.be/722EU6mSSIQ",
     year: "2026",
     duration: "5:03",
     orientation: "horizontal",
   },
+
   {
     id: 3,
     title: "VFX Showreel",
     description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
     tags: ["VFX", "Particles", "Compositing"],
-    categories: ["editing"],
+
+    categories: ["vfx", "motion"],
+
     poster: "/videos/vfx-showreel-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2025",
     duration: "3:20",
     orientation: "horizontal",
   },
+
   {
     id: 4,
     title: "Благодійне бюро",
     description: "Кінематографічне intro з об’ємною графікою та атмосферним освітленням.",
     tags: ["Intro", "3D", "Motion"],
-    categories: ["editing"],
+
+    categories: ["motion", "vfx"],
+
     poster: "/videos/charity-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2024",
     duration: "1:58",
     orientation: "horizontal",
   },
+
   {
     id: 5,
     title: "Black Friday +30%",
     description: "Яскрава промо-анімація для акції з динамічною типографікою.",
     tags: ["Typography", "Promo", "Motion"],
-    categories: ["editing"],
+
+    categories: ["motion", "social"],
+
     poster: "/videos/black-friday-poster.jpg",
     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
     year: "2024",
     duration: "0:48",
     orientation: "horizontal",
   },
+
   {
     id: 6,
     title: "Цікавий факт",
     description: "Стильна текстова анімація з мінімалістичною графікою.",
     tags: ["Typography", "Titling"],
-    categories: ["editing"],
+
+    categories: ["editing", "motion", "social"],
+
     poster: "/videos/fact-poster.jpg",
     video: "https://www.youtube.com/shorts/XXXXXXXXXXX",
     year: "2024",
     duration: "0:45",
     orientation: "vertical",
   },
+
   {
-  id: 7,
-  title: "Camp Promo",
-  description: "Динамічний проморолик із монтажем, motion-графікою та саунд-дизайном.",
-  tags: ["Editing", "Motion", "Sound Design"],
+    id: 7,
+    title: "Camp Promo",
+    description: "Динамічний проморолик із монтажем, motion-графікою та саунд-дизайном.",
+    tags: ["Editing", "Motion", "Sound Design"],
 
-  categories: ["editing", "motion", "social"],
+    categories: ["editing", "motion", "social"],
 
-  poster: "/videos/camp-poster.jpg",
-  video: "/videos/camp.mp4",
-
-  year: "2026",
-  duration: "0:45",
-  orientation: "horizontal",
-},
+    poster: "/videos/camp-poster.jpg",
+    video: "/videos/camp.mp4",
+    year: "2026",
+    duration: "0:45",
+    orientation: "horizontal",
+  },
 ];
 
 export const experience = [
