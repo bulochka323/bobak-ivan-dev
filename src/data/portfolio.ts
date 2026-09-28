@@ -177,24 +177,6 @@ export const experience = [
   },
 ];
 
-export const education = [
-  {
-    period: "2024 — 2026",
-    place: "Європейський університет",
-    detail: "Комп’ютерні науки",
-  },
-  {
-    period: "2024 — 2027",
-    place: "IT STEP Computer Academy",
-    detail: "Комп’ютерна графіка і Дизайн",
-  },
-  {
-    period: "2013 — 2015",
-    place: "КНУКіМ",
-    detail: "Дизайн",
-  },
-];
-
 export const navLinks = [
   { label: "Навички", href: "#skills" },
   { label: "Роботи", href: "#projects" },
