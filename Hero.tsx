@@ -55,16 +55,19 @@ export function Hero() {
           {personalInfo.availability}
         </motion.p>
 
-        <motion.h1
-          variants={reduced ? undefined : heroItem}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl"
-        >
-          {personalInfo.name}
-          <br />
-          <span className="text-[var(--color-text-secondary)] font-semibold">
-            {personalInfo.role}
-          </span>
-        </motion.h1>
+        <motion.div variants={reduced ? undefined : item}>
+  <p className="mb-3 text-sm font-semibold tracking-[0.25em] uppercase text-[var(--color-accent)]">
+    BOVANO
+  </p>
+
+  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl">
+    {personalInfo.name}
+    <br />
+    <span className="text-[var(--color-text-secondary)] font-semibold">
+      {personalInfo.role}
+    </span>
+  </h1>
+</motion.div>
 
         <motion.p
           variants={reduced ? undefined : heroItem}
