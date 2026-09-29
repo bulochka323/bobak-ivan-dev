@@ -86,13 +86,13 @@ export const projectCategories = [
 export const projects = [
   {
     id: 1,
-    title: "12x",
-    description: "Брендинг і анімоване лого для YouTube-каналу про моушн-дизайн.",
-    tags: ["Logo Animation", "Branding"],
+    title: "VFX Showreel",
+    description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
+    tags: ["VFX", "Particles", "Compositing"],
 
-    categories: ["logo", "motion", "social"],
+    categories: ["vfx", "motion"],
 
-    poster: "/videos/Sequence 01_1091.jpg",
+    poster: "/videos/public/videos/showreel.png",
     video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
     year: "2026",
     duration: "0:21",
