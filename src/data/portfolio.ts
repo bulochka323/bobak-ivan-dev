@@ -105,7 +105,7 @@ export const projects = [
     description: "Коротке відео про Mazda MX-5 з акцентом на форму, деталі та характер автомобіля. Через монтаж і звук зібрав окремі плани в цілісну атмосферу.",
     tags: ["Video Editing"],
 
-    categories: ["editing"],
+    categories: ["social","editing"],
 
     poster: "/videos/storm born.jpg",
     video: "https://youtube.com/shorts/9UaOwYz6acU",
@@ -120,7 +120,7 @@ export const projects = [
     description: "Динамічне відео з ігрового простору Cyberzone. Монтажем підкреслив людей, деталі та швидкий темп події.",
     tags: ["VFX", "Video Editing", "Compositing"],
 
-    categories: ["vfx", "motion", "editing"],
+    categories: ["social","vfx", "motion", "editing"],
 
     poster: "/videos/vfx-showreel-poster.jpg",
     video: "https://youtube.com/shorts/xrd_Cy6xdEI",
