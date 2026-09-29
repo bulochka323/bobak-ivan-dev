@@ -195,12 +195,42 @@ export const projects = [
     description: "Коротке відео з повсякденних моментів і деталей. Через монтаж зберіг живу фактуру матеріалу та зібрав його в послідовний настрій.",
     tags: ["Video Editing"],
 
-    categories: ["editing",],
+    categories: ["editing"],
 
     poster: "/videos/camp-poster.jpg",
     video: "https://youtube.com/shorts/MZCUKWRCnSc",
     year: "2026",
     duration: "0:46",
+    orientation: "vertical",
+  },
+
+{
+    id: 9,
+    title: "Картопля 2026",
+    description: "Відео про збір картоплі з простих кадрів поля, роботи та результату. Через послідовність планів і ритм монтажу перетворив звичайний процес на невелику історію.",
+    tags: ["Video Editing"],
+
+    categories: ["editing"],
+
+    poster: "/videos/camp-poster.jpg",
+    video: "https://youtube.com/shorts/9az6rBSRfeQ",
+    year: "2026",
+    duration: "0:43",
+    orientation: "vertical",
+  },
+
+  {
+    id: 10,
+    title: "Осінній вишкіл",
+    description: "Промовідео вишколу, де важливо було передати рух, командну роботу й атмосферу події. Стиснув різні епізоди в динамічну історію, яка тримає увагу.",
+    tags: ["Video Editing"],
+
+    categories: ["editing", "vfx"],
+
+    poster: "/videos/camp-poster.jpg",
+    video: "https://youtube.com/shorts/9az6rBSRfeQ",
+    year: "2026",
+    duration: "4:22",
     orientation: "vertical",
   },
   
