@@ -228,7 +228,7 @@ export const projects = [
     categories: ["editing", "vfx"],
 
     poster: "/videos/camp-poster.jpg",
-    video: "https://youtube.com/shorts/9az6rBSRfeQ",
+    video: "https://youtu.be/coQ5yI0Omzs",
     year: "2026",
     duration: "4:22",
     orientation: "vertical",
