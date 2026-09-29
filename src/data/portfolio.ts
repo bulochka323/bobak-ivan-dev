@@ -86,32 +86,32 @@ export const projectCategories = [
 export const projects = [
   {
     id: 1,
-    title: "VFX Showreel",
-    description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
-    tags: ["VFX", "Particles", "Compositing"],
+    title: "BOVANO Showreel",
+    description: "Добірка моїх робіт у монтажі, графіці та візуальних ефектах. Зібрав різні за настроєм кадри в один ритмічний ролик, який показує мій підхід до відео.",
+    tags: ["VFX", "Video Editing"],
 
-    categories: ["vfx", "motion"],
+    categories: ["vfx", "editing"],
 
     poster: "videos/showreel.jpg",
     video: "https://youtube.com/shorts/SnYp39ica_8?feature=share",
     year: "2026",
-    duration: "0:21",
+    duration: "0:37",
     orientation: "vertical",
   },
 
   {
     id: 2,
-    title: "Storm/born",
-    description: "Динамічна анімація логотипу з неоновими акцентами та плавними переходами.",
-    tags: ["Logo Animation", "After Effects"],
+    title: "Mazda MX-5",
+    description: "Коротке відео про Mazda MX-5 з акцентом на форму, деталі та характер автомобіля. Через монтаж і звук зібрав окремі плани в цілісну атмосферу.",
+    tags: ["Video Editing"],
 
-    categories: ["logo", "motion", "vfx"],
+    categories: ["editing"],
 
     poster: "/videos/storm born.jpg",
-    video: "https://youtu.be/722EU6mSSIQ",
+    video: "https://youtube.com/shorts/9UaOwYz6acU",
     year: "2026",
-    duration: "5:03",
-    orientation: "horizontal",
+    duration: "0.41",
+    orientation: "vertical",
   },
 
   {
