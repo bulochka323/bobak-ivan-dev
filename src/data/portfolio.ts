@@ -116,17 +116,17 @@ export const projects = [
 
   {
     id: 3,
-    title: "VFX Showreel",
-    description: "Візуальні ефекти: частинки, електричні розряди та складні світлові композиції.",
-    tags: ["VFX", "Particles", "Compositing"],
+    title: "Cyberzone Event",
+    description: "Динамічне відео з ігрового простору Cyberzone. Монтажем підкреслив людей, деталі та швидкий темп події.",
+    tags: ["VFX", "Video Editing", "Compositing"],
 
-    categories: ["vfx", "motion"],
+    categories: ["vfx", "motion", "editing"],
 
     poster: "/videos/vfx-showreel-poster.jpg",
-    video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
-    year: "2025",
-    duration: "3:20",
-    orientation: "horizontal",
+    video: "https://youtube.com/shorts/xrd_Cy6xdEI",
+    year: "2026",
+    duration: "0.23",
+    orientation: "vertical",
   },
 
   {
