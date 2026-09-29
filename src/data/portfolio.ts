@@ -131,32 +131,32 @@ export const projects = [
 
   {
     id: 4,
-    title: "Благодійне бюро",
-    description: "Кінематографічне intro з об’ємною графікою та атмосферним освітленням.",
-    tags: ["Intro", "3D", "Motion"],
+    title: "Фестиваль",
+    description: "Відео з фестивалю, зібране навколо енергії сцени та реакцій людей. Через темп монтажу, музику й зміну планів передав відчуття живої події.",
+    tags: ["VFX", "Video Editing", "Compositing"],
 
-    categories: ["motion", "vfx"],
+    categories: ["social","vfx", "motion", "editing"],
 
     poster: "/videos/charity-poster.jpg",
-    video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
-    year: "2024",
-    duration: "1:58",
-    orientation: "horizontal",
+    video: "https://youtube.com/shorts/ZSDdR-1O-bk",
+    year: "2026",
+    duration: "1:13",
+    orientation: "vertical",
   },
 
   {
     id: 5,
-    title: "Black Friday +30%",
-    description: "Яскрава промо-анімація для акції з динамічною типографікою.",
-    tags: ["Typography", "Promo", "Motion"],
+    title: "Орявчик — промовідео осіннього вишколу",
+    description: "Зібрав короткий ролик, який знайомить із програмою вишколу та передає атмосферу поїздки в гори. Поєднав кадри активностей, анімовані написи й музику, щоб глядач швидко зрозумів, що чекає на учасників.",
+    tags: ["Typography", "Motion", "Video Editing"],
 
     categories: ["motion", "social"],
 
     poster: "/videos/black-friday-poster.jpg",
-    video: "https://www.youtube.com/watch?v=XXXXXXXXXXX",
-    year: "2024",
-    duration: "0:48",
-    orientation: "horizontal",
+    video: "https://youtube.com/shorts/09OWJYJ5N3M",
+    year: "2026",
+    duration: "0:38",
+    orientation: "vertical",
   },
 
   {
