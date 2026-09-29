@@ -92,7 +92,7 @@ export const projects = [
 
     categories: ["vfx", "motion"],
 
-    poster: "public/videos/showreel.jpg",
+    poster: "videos/showreel.jpg",
     video: "https://www.youtube.com/shorts/gRRcW5RnGlw",
     year: "2026",
     duration: "0:21",
