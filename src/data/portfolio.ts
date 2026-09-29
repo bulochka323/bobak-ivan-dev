@@ -188,6 +188,22 @@ export const projects = [
     duration: "0:19",
     orientation: "vertical",
   },
+
+{
+    id: 8,
+    title: "17 07 2026",
+    description: "Коротке відео з повсякденних моментів і деталей. Через монтаж зберіг живу фактуру матеріалу та зібрав його в послідовний настрій.",
+    tags: ["Video Editing"],
+
+    categories: ["editing",],
+
+    poster: "/videos/camp-poster.jpg",
+    video: "https://youtube.com/shorts/MZCUKWRCnSc",
+    year: "2026",
+    duration: "0:46",
+    orientation: "vertical",
+  },
+  
 ];
 
 export const experience = [
