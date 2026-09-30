@@ -18,11 +18,20 @@ export const personalInfo = {
 
 export const about = {
   paragraphs: [
-    "Мене звати Іван Бобак. Я займаюся монтажем і motion design та постійно розвиваюся в цьому напрямку ",
+    "Мене звати Іван Бобак. Я займаюся монтажем і motion design та постійно розвиваюся в цьому напрямку.",
     "Найбільше мені подобається брати навіть неідеальний матеріал і через монтаж, ритм, звук та графіку збирати з нього цілісне відео.",
     "Працюю з анімацією логотипів, текстом, VFX та AI-інструментами. Можу окремо працювати з монтажем або зібрати всю візуальну частину проєкту в одному стилі.",
- 
-  tags: [ "Video Editing", "Motion Design", "Logo Animation", "VFX", "Sound Design", "AI / Generative"],
+  ],
+
+  tags: [
+    "Video Editing",
+    "Motion Design",
+    "Logo Animation",
+    "VFX",
+    "Sound Design",
+    "AI / Generative",
+  ],
+
   stats: [
     { label: "Років досвіду", value: "2" },
     { label: "Проєктів", value: "35+" },
@@ -96,7 +105,7 @@ export const projects = [
     poster: "/videos/2.jpg",
     video: "https://youtube.com/shorts/9UaOwYz6acU",
     year: "2026",
-    duration: "0.41",
+    duration: "0:41",
     orientation: "vertical",
   },
 
@@ -104,14 +113,14 @@ export const projects = [
     id: 3,
     title: "Cyberzone Event",
     description: "Динамічне відео з ігрової події, побудоване на деталях і темпі.",
-    tags: ["AI / Generative"],
+    tags: ["Video Editing"],
 
     categories: ["social","vfx", "motion", "editing"],
 
     poster: "/videos/3.jpg",
     video: "https://youtube.com/shorts/xrd_Cy6xdEI",
     year: "2026",
-    duration: "0.23",
+    duration: "0:23",
     orientation: "vertical",
   },
 
@@ -138,7 +147,7 @@ export const projects = [
 
     categories: ["editing", "motion", "social"],
 
-    poster: "/videos/black-friday-poster.jpg",
+    poster: "/videos/5.jpg",
     video: "https://youtube.com/shorts/09OWJYJ5N3M",
     year: "2026",
     duration: "0:38",
