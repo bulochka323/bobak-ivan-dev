@@ -22,7 +22,7 @@ export const about = {
     "Найбільше мені подобається брати навіть неідеальний матеріал і через монтаж, ритм, звук та графіку збирати з нього цілісне відео.",
     "Працюю з анімацією логотипів, текстом, VFX та AI-інструментами. Можу окремо працювати з монтажем або зібрати всю візуальну частину проєкту в одному стилі.",
   ],
-  tags: ["Video Editing", "Motion Design", "Logo Animation", "VFX", "Sound Design", "AI / Generative"],
+  specialties: ["Video Editing", "Motion Design", "Logo Animation", "VFX", "Sound Design", "AI / Generative"],
   stats: [
     { label: "Років досвіду", value: "2" },
     { label: "Проєктів", value: "35+" },
