@@ -87,7 +87,7 @@ export const projects = [
   {
     id: 1,
     title: "BOVANO Showreel",
-    description: "Добірка моїх робіт у монтажі, графіці та візуальних ефектах. Зібрав різні за настроєм кадри в один ритмічний ролик, який показує мій підхід до відео.",
+    description: "Найсильніші роботи в одному ролику: монтаж, motion і різні настрої.",
     tags: ["VFX", "Video Editing"],
 
     categories: ["vfx", "editing"],
@@ -102,12 +102,12 @@ export const projects = [
   {
     id: 2,
     title: "Mazda MX-5",
-    description: "Коротке відео про Mazda MX-5 з акцентом на форму, деталі та характер автомобіля. Через монтаж і звук зібрав окремі плани в цілісну атмосферу.",
+    description: "Автомобільний ролик із фокусом на деталях, формі та характері Mazda.",
     tags: ["Video Editing"],
 
     categories: ["social","editing"],
 
-    poster: "/videos/storm born.jpg",
+    poster: "/videos/2.jpg",
     video: "https://youtube.com/shorts/9UaOwYz6acU",
     year: "2026",
     duration: "0.41",
@@ -117,12 +117,12 @@ export const projects = [
   {
     id: 3,
     title: "Cyberzone Event",
-    description: "Динамічне відео з ігрового простору Cyberzone. Монтажем підкреслив людей, деталі та швидкий темп події.",
+    description: "Динамічне відео з ігрової події, побудоване на деталях і темпі.",
     tags: ["AI / Generative"],
 
     categories: ["social","vfx", "motion", "editing"],
 
-    poster: "/videos/vfx-showreel-poster.jpg",
+    poster: "/videos/3.jpg",
     video: "https://youtube.com/shorts/xrd_Cy6xdEI",
     year: "2026",
     duration: "0.23",
@@ -132,12 +132,12 @@ export const projects = [
   {
     id: 4,
     title: "AI Visual Story",
-    description: "Візуальна історія, створена за допомогою AI інструментів. Поєднав згенеровані кадри, музику, титри та монтаж в один завершений ролик.",
+    description: "AI-кадри, музика й титри, зібрані в цілісну історію.",
     tags: ["VFX", "Video Editing", "Compositing"],
 
     categories: ["ai"],
 
-    poster: "/videos/charity-poster.jpg",
+    poster: "/videos/4.jpg",
     video: "https://youtube.com/shorts/wJ3TCc1DKBo",
     year: "2026",
     duration: "0:33",
@@ -162,12 +162,12 @@ export const projects = [
   {
     id: 6,
     title: "Орявчик 2",
-    description: "Монтаж, музика та короткі титри передають атмосферу й запрошують долучитися до нового вишколу.",
+    description: "Запрошення на вишкіл із кадрами попередніх поїздок і занять.",
     tags: ["Typography", "Video Editing"],
 
     categories: ["editing", "social"],
 
-    poster: "/videos/fact-poster.jpg",
+    poster: "/videos/6.jpg",
     video: "https://youtube.com/shorts/8U3b0nK0HII",
     year: "2026",
     duration: "0:34",
@@ -177,12 +177,12 @@ export const projects = [
   {
     id: 7,
     title: "BMW — монтаж розмовного відео",
-    description: "Короткий ролик для автомайстерні: показав роботу з кузовом і результат крупними планами. Додав субтитри з акцентами на ключових словах, щоб пояснення було легко сприймати навіть без звуку.",
+    description: "Робота автомайстерні й результат, підкреслені монтажем та субтитрами.",
     tags: ["Video Editing"],
 
     categories: ["editing", "social"],
 
-    poster: "/videos/camp-poster.jpg",
+    poster: "/videos/7.jpg",
     video: "https://youtube.com/shorts/ZrEvKyrqTu8",
     year: "2026",
     duration: "0:19",
@@ -191,13 +191,13 @@ export const projects = [
 
 {
     id: 8,
-    title: "17 07 2026",
-    description: "Коротке відео з повсякденних моментів і деталей. Через монтаж зберіг живу фактуру матеріалу та зібрав його в послідовний настрій.",
+    title: "Сільська історія",
+    description: "Повсякденні кадри, зібрані в атмосферну історію.",
     tags: ["Video Editing"],
 
     categories: ["editing"],
 
-    poster: "/videos/camp-poster.jpg",
+    poster: "/videos/8.jpg",
     video: "https://youtube.com/shorts/MZCUKWRCnSc",
     year: "2026",
     duration: "0:46",
@@ -207,12 +207,12 @@ export const projects = [
 {
     id: 9,
     title: "Картопля 2026",
-    description: "Відео про збір картоплі з простих кадрів поля, роботи та результату. Через послідовність планів і ритм монтажу перетворив звичайний процес на невелику історію.",
+    description: "Повсякденні кадри, зібрані в атмосферну історію.",
     tags: ["Video Editing"],
 
     categories: ["editing"],
 
-    poster: "/videos/camp-poster.jpg",
+    poster: "/videos/9.jpg",
     video: "https://youtube.com/shorts/9az6rBSRfeQ",
     year: "2026",
     duration: "0:43",
@@ -222,12 +222,12 @@ export const projects = [
   {
     id: 10,
     title: "Осінній вишкіл",
-    description: "Промовідео вишколу, де важливо було передати рух, командну роботу й атмосферу події. Стиснув різні епізоди в динамічну історію, яка тримає увагу.",
+    description: "Історія вишколу через рух, командну роботу та живі моменти.",
     tags: ["Video Editing"],
 
     categories: ["editing", "vfx"],
 
-    poster: "/videos/camp-poster.jpg",
+    poster: "/videos/10.jpg",
     video: "https://youtu.be/coQ5yI0Omzs",
     year: "2026",
     duration: "4:22",
