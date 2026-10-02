@@ -258,7 +258,97 @@ export const projects = [
     poster: "/videos/10.jpg",
     video: "https://youtu.be/XAJFcWVhLWU",
     year: "2026",
-    duration: "4:22",
+    duration: "0:23",
+    orientation: "horizontal",
+  },
+
+{
+    id: 12,
+    title: "Останній бій УПА",
+    description: "Історична відеоробота про бій УПА з атмосферними кадрами й титрами.",
+    tags: ["VFX", "Video Editing", "Compositing"],
+
+    categories: ["editing", "logo", "motion", "vfx"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/11yNkTMwt38",
+    year: "2025",
+    duration: "1:47",
+    orientation: "horizontal",
+  },
+
+{
+    id: 13,
+    title: "STORM",
+    description: "Напружена візуальна історія з темною атмосферою, графікою та VFX.",
+    tags: ["Video Editing", "Compositing"],
+
+    categories: ["editing", "vfx"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/U95P7Z1onKE",
+    year: "2026",
+    duration: "5:04",
+    orientation: "horizontal",
+  },
+  
+{
+    id: 14,
+    title: "BLACK FRIDAY",
+    description: "Рекламний ролик до Black Friday з акцентом на знижку та динамічну подачу.",
+    tags: ["Motion Design", "Compositing"],
+
+    categories: ["motion"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtube.com/shorts/Vin6RV0e1Dc",
+    year: "2026",
+    duration: "0:11",
+    orientation: "vertical",
+  },
+    
+{
+    id: 15,
+    title: "Celestial Division — анімація логотипа",
+    description: "Поява емблеми у військовому стилі з радаром і ракетою.",
+    tags: ["Logo Animation","Motion Design"],
+
+    categories: ["motion","logo"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtube.com/shorts/i_OfV1ARwJs",
+    year: "2026",
+    duration: "0:07",
+    orientation: "vertical",
+  },
+      
+{
+    id: 16,
+    title: "Padecast",
+    description: "Лаконічна анімація логотипа подкасту з виразною типографікою",
+    tags: ["Logo Animation","Motion Design"],
+
+    categories: ["motion", "logo"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/dZ0Z43sFCws",
+    year: "2026",
+    duration: "0:06",
+    orientation: "horizontal",
+  },
+        
+{
+    id: 17,
+    title: "MR.VAN",
+    description: "Мінімалістична анімація логотипа з неоновими зеленими акцентами.",
+    tags: ["Logo Animation","Motion Design"],
+
+    categories: ["motion", "logo"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/_y5TzAS_02Y",
+    year: "2026",
+    duration: "0:08",
     orientation: "horizontal",
   },
   
