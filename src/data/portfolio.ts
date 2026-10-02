@@ -246,6 +246,21 @@ export const projects = [
     duration: "4:22",
     orientation: "vertical",
   },
+
+{
+    id: 11,
+    title: "Кінематографічна сцена бою",
+    description: "Динамічна військова сцена з бійцем і масштабним вибухом.",
+    tags: ["VFX", "Video Editing", "Compositing"],
+
+    categories: ["ai"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/XAJFcWVhLWU",
+    year: "2026",
+    duration: "4:22",
+    orientation: "horizontal",
+  },
   
 ];
 
