@@ -255,7 +255,7 @@ export const projects = [
 
     categories: ["ai"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/17.jpg",
     video: "https://youtu.be/XAJFcWVhLWU",
     year: "2026",
     duration: "0:23",
@@ -270,7 +270,7 @@ export const projects = [
 
     categories: ["editing", "logo", "motion", "vfx"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/16.jpg",
     video: "https://youtu.be/11yNkTMwt38",
     year: "2025",
     duration: "1:47",
@@ -285,7 +285,7 @@ export const projects = [
 
     categories: ["editing", "vfx"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/15.jpg",
     video: "https://youtu.be/U95P7Z1onKE",
     year: "2026",
     duration: "5:04",
@@ -300,7 +300,7 @@ export const projects = [
 
     categories: ["motion"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/18.jpg",
     video: "https://youtube.com/shorts/Vin6RV0e1Dc",
     year: "2026",
     duration: "0:11",
@@ -315,7 +315,7 @@ export const projects = [
 
     categories: ["motion","logo"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/19.jpg",
     video: "https://youtube.com/shorts/i_OfV1ARwJs",
     year: "2026",
     duration: "0:07",
@@ -330,7 +330,7 @@ export const projects = [
 
     categories: ["motion", "logo"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/14.jpg",
     video: "https://youtu.be/dZ0Z43sFCws",
     year: "2026",
     duration: "0:06",
@@ -345,7 +345,7 @@ export const projects = [
 
     categories: ["motion", "logo"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/12.jpg",
     video: "https://youtu.be/_y5TzAS_02Y",
     year: "2026",
     duration: "0:08",
@@ -360,7 +360,7 @@ export const projects = [
 
     categories: ["motion"],
 
-    poster: "/videos/10.jpg",
+    poster: "/videos/11.jpg",
     video: "https://youtu.be/4Lx__RXD-_g",
     year: "2026",
     duration: "0:21",
