@@ -351,6 +351,21 @@ export const projects = [
     duration: "0:08",
     orientation: "horizontal",
   },
+          
+{
+    id: 18,
+    title: "Motion CV",
+    description: "Анімоване резюме з акцентом на типографіку та композицію.",
+    tags: ["Motion Design"],
+
+    categories: ["motion"],
+
+    poster: "/videos/10.jpg",
+    video: "https://youtu.be/4Lx__RXD-_g",
+    year: "2026",
+    duration: "0:21",
+    orientation: "horizontal",
+  },
   
 ];
 
