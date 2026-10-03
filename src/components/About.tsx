@@ -10,7 +10,7 @@ export function About() {
           <ScrollReveal className="md:col-span-4" direction="right">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]">
               <img
-                src="/photo.jpg"
+                src="/Без назви-1ііі.jpg"
                 alt={personalInfo.name}
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
