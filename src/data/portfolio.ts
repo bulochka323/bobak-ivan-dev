@@ -1,10 +1,10 @@
 export const personalInfo = {
-  name: "BOVANO",
+  name: "IVAN BOBAK",
   role: "Video Editor / Motion Designer",
   availability: "Створюй те що залишає слід",
 
   tagline:
-    "Працюю з монтажем, motion design та анімацією. Для мене важливо, щоб відео не просто виглядало красиво, а мало ритм, характер і нормально тримало увагу.",
+    "Працюю з монтажем, motion design та анімацією. Для мене важливо, щоб відео не просто виглядало красиво, а мало ритм і характер та утримувало увагу глядача",
 
   email: "mr.van2332@gmail.com",
   phone: "+380930969406",
@@ -220,7 +220,7 @@ export const projects = [
 {
     id: 9,
     title: "Картопля 2026",
-    description: "Повсякденні кадри, зібрані в атмосферну історію.",
+    description: "Збір картоплі, змонтований як коротка історія від поля до результату.",
     tags: ["Video Editing"],
 
     categories: ["editing"],
